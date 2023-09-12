@@ -1,0 +1,120 @@
+@use './mixin' as m;
+.works-bg{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--blue);
+  
+  p{
+    font-size: min(15vw,10em);
+    font-weight: 700;
+    letter-spacing: 3vw;
+    white-space: nowrap;
+    color: rgba($color: #fff, $alpha: .6);
+  }
+  #particles-js{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}//works-bg
+.works-content{
+  position: relative;
+  
+  width: min(95%,1400px);
+  margin: 0 auto;
+  padding-top: 25vh;
+  figure{
+    margin-bottom: 25vh;
+    @media #{m.$minLg}{
+      width: 30%;
+      &:nth-child(4n+1){
+        margin-left: auto;
+      }
+      &:nth-child(even){
+        margin-left: auto;
+        margin-right: auto;
+      }
+      &:nth-child(4n+3){}
+    }//minLg
+    @media #{m.$md}{
+      width: 70%;
+      &:nth-child(odd){margin-left: auto;}
+    }//md
+    @media #{m.$maxSm}{
+      width: 100%;
+    }//maxLg
+    a{
+      &:hover{
+        div{
+          border-color: var(--green);
+          transform: scale(0.95);
+        }
+      }
+      div{
+        border: 7px solid #ccc;
+        box-shadow: 0 0 20px rgba( #000, .2);
+        transition: all .5s;
+        overflow: hidden;
+        img{
+          width: 100%;
+        }
+      }//div
+      figcaption{
+        color: #fff;
+        h2{
+          display: inline-block;
+          position: relative;
+          margin: 20px 0 10px;
+          font-size: 1.5em;
+          font-weight: 600;
+          &::before{
+            content: '';
+            position: absolute;
+            height: 10px;
+            width: 50%;
+            bottom: 0;
+            left: 0;
+            background-color: var(--green);
+            mix-blend-mode: multiply;
+          }
+       
+        }
+        p{
+          white-space: nowrap;
+          br{display: none;}
+          overflow: hidden;
+          display: flex;
+          span{
+            font-size: 1,2em;
+            font-weight: 600;
+            animation: rolling 5s infinite linear;
+            @keyframes rolling {
+              0%{transform: translateX(0);}
+              100%{transform: translateX(-100%);}
+            }
+          }
+        }
+      }
+    }//a
+  }
+}//.works-content
+
+.cusor{
+  pointer-events: none;
+  position: fixed;
+  z-index: 6;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(#00fbb9  , .7);
+  color: #fff;
+  text-align: center;
+  line-height: 80px;
+  font-size: 1.2em;
+  transform: scale(0);
+  transition: transform .5s;
+}
